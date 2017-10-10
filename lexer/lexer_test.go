@@ -2,30 +2,31 @@ package lexer
 
 import (
 	"testing"
+
 	"monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
 	input := `let five = 5;
-	let ten = 10;
+let ten = 10;
 
-	let add = fn(x, y) {
-		x + y;
-	};
+let add = fn(x, y) {
+  x + y;
+};
 
-	let result = add(five, ten);
-	!-/*5;
-	5 < 10 > 5;
+let result = add(five, ten);
+!-/*5;
+5 < 10 > 5;
 
-	if (5 < 10) {
-		return true;
-	} else {
-		return false;
-	}
+if (5 < 10) {
+	return true;
+} else {
+	return false;
+}
 
-	10 == 10;
-	10 != 9;
-	`
+10 == 10;
+10 != 9;
+`
 
 	tests := []struct {
 		expectedType    token.TokenType
@@ -105,8 +106,6 @@ func TestNextToken(t *testing.T) {
 		{token.INT, "9"},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
-
-
 	}
 
 	l := New(input)
